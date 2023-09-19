@@ -22,8 +22,6 @@ spring:
     username: guest
     password: guest
 
-
-
 logging:
   level:
     com:
