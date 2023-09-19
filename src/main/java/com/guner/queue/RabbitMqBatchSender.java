@@ -27,7 +27,7 @@ public class RabbitMqBatchSender {
     }
 
     public void messageBatchSend(ChargingRecord chargingRecord) {
-        IntStream.range(0,101).forEach(i ->
+        IntStream.range(0,1001).forEach(i ->
                 batchingRabbitTemplate.convertAndSend(topicExchange, routingKeyBatch, chargingRecord));
 
         //batchingRabbitTemplate.flush();;
