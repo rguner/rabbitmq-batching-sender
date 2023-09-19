@@ -25,7 +25,7 @@ public class BannedDestinationService {
         return bannedDestinationList;
     }
 
-    public BannedDestination getbannedDestinationsById(long id) {
+    public BannedDestination getBannedDestinationsById(long id) {
         BannedDestination bannedDestination = bannedDestinationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found bannedDestination with id = " + id));
 
@@ -33,11 +33,11 @@ public class BannedDestinationService {
         return bannedDestination;
     }
 
-    public BannedDestination createbannedDestination(BannedDestination bannedDestination) {
-        return createbannedDestination(bannedDestination, true);
+    public BannedDestination createBannedDestination(BannedDestination bannedDestination) {
+        return createBannedDestination(bannedDestination, true);
     }
 
-    public BannedDestination createbannedDestination(BannedDestination bannedDestination, boolean sendEvent) {
+    public BannedDestination createBannedDestination(BannedDestination bannedDestination, boolean sendEvent) {
         BannedDestination bannedDestination1 = bannedDestinationRepository.save(
                 BannedDestination.builder()
                         .gsmNo(bannedDestination.getGsmNo())
@@ -47,7 +47,7 @@ public class BannedDestinationService {
         return bannedDestination1;
     }
 
-    public BannedDestination updatebannedDestination(long id, BannedDestination bannedDestination) {
+    public BannedDestination updateBannedDestination(long id, BannedDestination bannedDestination) {
         BannedDestination bannedDestination1 = bannedDestinationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found bannedDestination with id = " + id));
 
@@ -59,7 +59,7 @@ public class BannedDestinationService {
         return bannedDestinationSaved;
     }
 
-    public void deletebannedDestination(long id) {
+    public void deleteBannedDestination(long id) {
         Optional<BannedDestination> optionalbannedDestination = bannedDestinationRepository.findById(id);
         if (optionalbannedDestination.isPresent()) {
             bannedDestinationRepository.deleteById(id);
@@ -69,7 +69,7 @@ public class BannedDestinationService {
         }
     }
 
-    public BannedDestination updatebannedDestinationByGsmNo(String gsmNo, BannedDestination bannedDestination) {
+    public BannedDestination updateBannedDestinationByGsmNo(String gsmNo, BannedDestination bannedDestination) {
         BannedDestination bannedDestination1 = bannedDestinationRepository.findByGsmNo(gsmNo).stream().findAny()
                 .orElseThrow(() -> new ResourceNotFoundException("Not found bannedDestination with gsmNo = " + gsmNo));
 
@@ -82,7 +82,7 @@ public class BannedDestinationService {
     }
 
     @Transactional
-    public void deletebannedDestinationByGsmMo(String gsmNo) {
+    public void deleteBannedDestinationByGsmMo(String gsmNo) {
         if (bannedDestinationRepository.existsByGsmNo(gsmNo)) {
             bannedDestinationRepository.deleteByGsmNo(gsmNo);
             log.debug("DELETE bannedDestination {}", gsmNo);
@@ -93,7 +93,7 @@ public class BannedDestinationService {
 
     public void insertTestData() {
         IntStream.rangeClosed(1, 1000).forEach(i -> {
-            createbannedDestination(BannedDestination.builder()
+            createBannedDestination(BannedDestination.builder()
                             .gsmNo(String.valueOf(5551000000L + i))
                             .updatedDate(LocalDateTime.now())
                             .build()

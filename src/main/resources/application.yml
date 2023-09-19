@@ -27,6 +27,8 @@ logging:
     com:
       guner: DEBUG
 
+
+
 batch-sender:
   queue:
     name:
