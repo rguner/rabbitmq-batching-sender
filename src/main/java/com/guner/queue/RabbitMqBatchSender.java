@@ -27,8 +27,11 @@ public class RabbitMqBatchSender {
     }
 
     public void messageBatchSend(ChargingRecord chargingRecord) {
-        IntStream.range(0,1001).forEach(i ->
-                batchingRabbitTemplate.convertAndSend(topicExchange, routingKeyBatch, chargingRecord));
+        String sourceGsm = chargingRecord.getSourceGsm();
+        IntStream.range(0, 1001).forEach(i -> {
+            chargingRecord.setSourceGsm(sourceGsm + "_" + i);
+            batchingRabbitTemplate.convertAndSend(topicExchange, routingKeyBatch, chargingRecord);
+        });
 
         //batchingRabbitTemplate.flush();;
 

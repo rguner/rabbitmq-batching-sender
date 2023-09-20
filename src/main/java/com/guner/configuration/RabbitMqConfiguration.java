@@ -60,7 +60,7 @@ public class RabbitMqConfiguration {
     @Bean
     public BatchingRabbitTemplate batchingRabbitTemplate(ConnectionFactory connectionFactory) {
         //BatchingStrategy strategy = new SimpleBatchingStrategy(500, 25_000, 3_000);
-        BatchingStrategy strategy = new SimpleBatchingStrategy(5, 25_000, 3_000);
+        BatchingStrategy strategy = new SimpleBatchingStrategy(5, 25_000, 20_000);
         TaskScheduler scheduler = new ConcurrentTaskScheduler();
         BatchingRabbitTemplate batchingRabbitTemplate = new BatchingRabbitTemplate(connectionFactory, strategy, scheduler);
         batchingRabbitTemplate.setMessageConverter(converter());
