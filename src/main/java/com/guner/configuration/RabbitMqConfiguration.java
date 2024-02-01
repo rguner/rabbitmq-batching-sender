@@ -57,6 +57,8 @@ public class RabbitMqConfiguration {
         return rabbitTemplate;
     }
 
+    // bu bean varsa normal gonderimler de batch olarak gidiyor single gönderim için comment out yap
+    /*
     @Bean
     public BatchingRabbitTemplate batchingRabbitTemplate(ConnectionFactory connectionFactory) {
         //BatchingStrategy strategy = new SimpleBatchingStrategy(500, 25_000, 3_000);
@@ -66,4 +68,6 @@ public class RabbitMqConfiguration {
         batchingRabbitTemplate.setMessageConverter(converter());
         return batchingRabbitTemplate;
     }
+
+     */
 }
