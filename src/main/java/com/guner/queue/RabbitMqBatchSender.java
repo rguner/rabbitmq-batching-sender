@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 public class RabbitMqBatchSender {
 
     private final RabbitTemplate rabbitTemplate;
-    //private final BatchingRabbitTemplate batchingRabbitTemplate;
+    private final BatchingRabbitTemplate batchingRabbitTemplate;
 
     @Value("${batch-sender.topic-exchange.name}")
     private String topicExchange;
@@ -31,7 +31,6 @@ public class RabbitMqBatchSender {
     }
 
 
-    /*
     public void messageBatchSend(ChargingRecord chargingRecord) {
         String sourceGsm = chargingRecord.getSourceGsm();
         IntStream.range(0, 1001).forEach(i -> {
@@ -41,6 +40,4 @@ public class RabbitMqBatchSender {
 
         //batchingRabbitTemplate.flush();;
     }
-
-     */
 }

@@ -28,10 +28,10 @@ public class BatchProcessorService {
                 .build();
 
         // single message sender
-        rabbitMqBatchSender.messageSend(chargingRecord);
+        //rabbitMqBatchSender.messageSend(chargingRecord);
 
         // batch sender
-        //rabbitMqBatchSender.messageBatchSend(chargingRecord);
+        rabbitMqBatchSender.messageBatchSend(chargingRecord);
 
         return true;
     }
