@@ -22,7 +22,8 @@ public class RabbitMqBatchSender {
     @Value("${batch-sender.routing.key.batch-routing}")
     private String routingKeyBatch;
 
-    public void messageSend(ChargingRecord chargingRecord) {
+    //
+    public void messageSingleSend(ChargingRecord chargingRecord) {
         String sourceGsm = chargingRecord.getSourceGsm();
         IntStream.range(0, 1001).forEach(i -> {
             chargingRecord.setSourceGsm(sourceGsm + "_" + i);
